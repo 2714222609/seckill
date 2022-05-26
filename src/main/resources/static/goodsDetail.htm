@@ -111,7 +111,7 @@
     //秒杀方法
     function doSecKill(path) {
         $.ajax({
-            url: 'seckill/' + path + '/doSeckill',
+            url: '/seckill/' + path + '/doSeckill',
             type: "POST",
             data: {
                 goodsId: $('#goodsId').val()
@@ -133,7 +133,7 @@
     function getResult(goodsId) {
         g_showLoading();
         $.ajax({
-            url: "/seckill/getResult",
+            url: "/seckill/result",
             type: "GET",
             data: {
                 goodsId: goodsId
@@ -150,7 +150,7 @@
                     } else {
                         layer.confirm("恭喜您，秒杀成功！查看订单？", {btn: ["确定", "取消"]},
                             function () {
-                                window.location.href = "/orderDetail.html?orderId=" + result;
+                                window.location.href = "/orderDetail.htm?orderId=" + result;
                             },
                             function () {
                                 layer.close();
@@ -186,9 +186,10 @@
     }
 
     function render(detail) {
-        var user = detail.tuser;
+        var user = detail.user;
         var goodsVo = detail.goodsVo;
         var remainSeconds = detail.remainSeconds;
+
         if (user) {
             $("#userTip").hide();
         }
@@ -230,7 +231,7 @@
             $("#captchaImg").hide();
             $("#captcha").hide();
         }
-    };
+    }
 
 </script>
 </html>
